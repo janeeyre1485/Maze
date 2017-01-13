@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class LabyrinthMatrix extends LabyrinthImpl {
 
 	private int matrix[][];
-	private int  freeValue, wallValue;
 
 	public LabyrinthMatrix(int rows, int columns) {
 		this.rows = rows;

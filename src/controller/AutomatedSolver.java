@@ -43,6 +43,10 @@ public class AutomatedSolver implements LabyrinthSolver {
 					solutionPath.add(current);
 				}
 				while(path.get(current)!= null);
+				for (Position position : solutionPath) {
+					System.out.println(position.toString());
+				}
+				
 				return;
 			}
 
