@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class LabyrinthMatrix extends LabyrinthImpl {
 
 	private int matrix[][];
-	private int  freeValue, wallValue;
 
 	public LabyrinthMatrix(int rows, int columns) {
 		this.rows = rows;
@@ -44,7 +43,7 @@ public class LabyrinthMatrix extends LabyrinthImpl {
 
 	@Override
 	public boolean isFreeAt(Position p) {
-		if (matrix[p.x][p.y] == freeValue || p.equals(finish))
+		if (matrix[p.x][p.y] == freeValue)
 			return true;
 		return false;
 	}

@@ -1,4 +1,5 @@
 package view;
+
 import model.Labyrinth;
 import model.Position;
 
@@ -22,13 +23,17 @@ public class LabyrinthText implements LabyrinthView {
 		for (int i = 0; i < lab.getRowCount(); i++) {
 			for (int j = 0; j < lab.getColumnCount(); j++) {
 				sb.append("|");
-				if (lab.isFreeAt(new Position(i, j)))
+				Position current = new Position(i, j);
+				if (lab.isFreeAt(current))
 					sb.append("-");
-				if (lab.isWallAt(new Position(i, j)))
+
+				if (lab.isWallAt(current))
 					sb.append("*");
-				if (lab.getStartCell().x == i && lab.getStartCell().y == j)
+
+				if (lab.getStartCell().equals(current))
 					sb.append("S");
-				if (lab.getFinishCell().x == i && lab.getFinishCell().y == j)
+
+				if (lab.getFinishCell().equals(current))
 					sb.append("F");
 			}
 			sb.append("|\n");
