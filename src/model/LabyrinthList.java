@@ -1,4 +1,5 @@
 package model;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,31 +10,14 @@ public class LabyrinthList extends LabyrinthImpl {
 
 	private HashMap<Position, Integer> list;
 
-	@Override
-	public int getRowCount() {
-		return rows;
-	}
-
-	@Override
-	public int getColumnCount() {
-		return columns;
-	}
-
-	@Override
-	public boolean isFreeAt(Position p) {
-		return !list.containsKey(p);
-	}
-
-
-	@Override
-	public boolean isWallAt(Position p) {
-		return list.containsKey(p) && list.get(p) != startValue && list.get(p) != finishValue;
-	}
-
-	@Override
-	public void loadFromFile(String path) {
+	public LabyrinthList(String path) {
 		try {
 			Scanner sc = new Scanner(new File(path));
+			startValue = sc.nextInt();
+			finishValue = sc.nextInt();
+			freeValue = sc.nextInt();
+			wallValue = sc.nextInt();
+
 			rows = sc.nextInt();
 			columns = sc.nextInt();
 
@@ -56,7 +40,27 @@ public class LabyrinthList extends LabyrinthImpl {
 		} catch (Exception ex) {
 			System.out.println("File was not found");
 		}
+	}
 
+	@Override
+	public int getRowCount() {
+		return rows;
+	}
+
+	@Override
+	public int getColumnCount() {
+		return columns;
+	}
+
+	@Override
+	public boolean isFreeAt(Position p) {
+		return !list.containsKey(p);
+	}
+
+	@Override
+	public boolean isWallAt(Position p) {
+		Integer value = list.get(p);
+		return value != null && value != startValue && value != finishValue;
 	}
 
 	@Override
