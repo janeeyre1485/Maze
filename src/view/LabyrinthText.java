@@ -7,6 +7,10 @@ public class LabyrinthText implements LabyrinthView {
 
 	private Labyrinth lab;
 
+	public LabyrinthText(Labyrinth l) {
+		lab = l;
+	}
+
 	@Override
 	public void setLabyrinth(Labyrinth l) {
 		lab = l;

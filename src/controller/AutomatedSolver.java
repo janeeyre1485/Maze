@@ -12,6 +12,10 @@ import model.Position;
 public class AutomatedSolver implements LabyrinthSolver {
 	private Labyrinth l;
 
+	public AutomatedSolver(Labyrinth l) {
+		this.l = l;
+	}
+
 	@Override
 	public Labyrinth getLabyrinth() {
 		return l;
@@ -42,7 +46,7 @@ public class AutomatedSolver implements LabyrinthSolver {
 					current = path.get(current);
 					solutionPath.add(current);
 				} while (path.get(current) != null);
-				
+
 				for (Position position : solutionPath) {
 					System.out.println(position.toString());
 				}

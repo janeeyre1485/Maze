@@ -15,8 +15,6 @@ public interface Labyrinth {
 
 	Position getFinishCell();
 	
-	void loadFromFile(String path);
-	
 	List<Position> getNeighbours(Position current);
 
 }
