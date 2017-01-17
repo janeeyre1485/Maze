@@ -1,4 +1,5 @@
 package controller;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -10,6 +11,10 @@ import model.Position;
 
 public class AutomatedSolver implements LabyrinthSolver {
 	private Labyrinth l;
+
+	public AutomatedSolver(Labyrinth l) {
+		this.l = l;
+	}
 
 	@Override
 	public Labyrinth getLabyrinth() {
@@ -27,7 +32,7 @@ public class AutomatedSolver implements LabyrinthSolver {
 		List<Position> visited = new ArrayList<Position>();
 		HashMap<Position, Position> path = new HashMap<Position, Position>();
 		List<Position> solutionPath = new ArrayList<Position>();
-		
+
 		q.add(current);
 		visited.add(current);
 		path.put(current, null);
@@ -37,18 +42,20 @@ public class AutomatedSolver implements LabyrinthSolver {
 			visited.add(current);
 			if (current.equals(l.getFinishCell())) {
 				solutionPath.add(current);
-				do
-				{
+				do {
 					current = path.get(current);
 					solutionPath.add(current);
+				} while (path.get(current) != null);
+
+				for (Position position : solutionPath) {
+					System.out.println(position.toString());
 				}
-				while(path.get(current)!= null);
 				return;
 			}
 
 			List<Position> neighbours = l.getNeighbours(current);
 			for (Position neighbour : neighbours) {
-				if (l.isFreeAt(neighbour) && !visited.contains(neighbour)) {
+				if ((l.isFreeAt(neighbour) || l.getFinishCell().equals(neighbour)) && !visited.contains(neighbour)) {
 					q.add(neighbour);
 					path.put(neighbour, current);
 				}

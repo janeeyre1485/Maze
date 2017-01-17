@@ -7,6 +7,10 @@ import model.Position;
 public class InteractiveLSolver implements LabyrinthSolver {
 
 	Labyrinth l;
+	
+	public InteractiveLSolver(Labyrinth l) {
+		this.l = l;
+	}
 
 	@Override
 	public Labyrinth getLabyrinth() {
