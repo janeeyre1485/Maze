@@ -1,21 +1,22 @@
 package model;
 
 public class Position {
-	public int x, y;
+	private int x;
+	private int y;
 
 	public Position() {
-		x = 0;
-		y = 0;
+		setX(0);
+		setY(0);
 	}
 
 	public Position(int x, int y) {
-		this.x = x;
-		this.y = y;
+		this.setX(x);
+		this.setY(y);
 	}
 
 	public Position(Position p) {
-		x = p.x;
-		y = p.y;
+		setX(p.getX());
+		setY(p.getY());
 	}
 
 	@Override
@@ -25,18 +26,34 @@ public class Position {
 		if (!(obj instanceof Position))
 			return false;
 		Position p = (Position) obj;
-		return this.x == p.x && this.y == p.y;
+		return this.getX() == p.getX() && this.getY() == p.getY();
 	}
 
 	@Override
 	public int hashCode() {
-		int result = x;
-		result = 31 * result + y;
+		int result = getX();
+		result = 31 * result + getY();
 		return result;
 	}
 
 	@Override
 	public String toString() {
-		return "(" + x + ", " + y + ")";
+		return "(" + getX() + ", " + getY() + ")";
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
 	}
 }
