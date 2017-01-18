@@ -10,23 +10,10 @@ import model.Labyrinth;
 import model.Position;
 
 public class AutomatedSolver implements LabyrinthSolver {
-	private Labyrinth l;
 
-	public AutomatedSolver(Labyrinth l) {
-		this.l = l;
-	}
 
 	@Override
-	public Labyrinth getLabyrinth() {
-		return l;
-	}
-
-	@Override
-	public void setLabyrinth(Labyrinth l) {
-		this.l = l;
-	}
-
-	public void solve() {
+	public void solve(Labyrinth l) {
 		Position current = new Position(l.getStartCell());
 		Queue<Position> q = new LinkedList<Position>();
 		List<Position> visited = new ArrayList<Position>();

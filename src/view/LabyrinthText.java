@@ -28,6 +28,7 @@ public class LabyrinthText implements LabyrinthView {
 			for (int j = 0; j < lab.getColumnCount(); j++) {
 				sb.append("|");
 				Position current = new Position(i, j);
+				
 				if (lab.isFreeAt(current))
 					sb.append("-");
 

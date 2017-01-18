@@ -17,4 +17,5 @@ public interface Labyrinth {
 	
 	List<Position> getNeighbours(Position current);
 
+	
 }
