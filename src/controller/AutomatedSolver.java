@@ -2,23 +2,24 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Set;
 
 import model.Labyrinth;
 import model.Position;
 
 public class AutomatedSolver implements LabyrinthSolver {
 
-
 	@Override
-	public void solve(Labyrinth l) {
+	public List<Position> solve(Labyrinth l) {
 		Position current = new Position(l.getStartCell());
-		Queue<Position> q = new LinkedList<Position>();
-		List<Position> visited = new ArrayList<Position>();
-		HashMap<Position, Position> path = new HashMap<Position, Position>();
-		List<Position> solutionPath = new ArrayList<Position>();
+		Queue<Position> q = new LinkedList<>();
+		Set<Position> visited = new HashSet<>();
+		HashMap<Position, Position> path = new HashMap<>();
+		List<Position> solutionPath = new ArrayList<>();
 
 		q.add(current);
 		visited.add(current);
@@ -34,10 +35,8 @@ public class AutomatedSolver implements LabyrinthSolver {
 					solutionPath.add(current);
 				} while (path.get(current) != null);
 
-				for (Position position : solutionPath) {
-					System.out.println(position.toString());
-				}
-				return;
+				break;
+
 			}
 
 			List<Position> neighbours = l.getNeighbours(current);
@@ -49,6 +48,9 @@ public class AutomatedSolver implements LabyrinthSolver {
 			}
 
 		}
+
+		return solutionPath;
+
 	}
 
 }

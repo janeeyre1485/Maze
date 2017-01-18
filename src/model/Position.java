@@ -5,8 +5,7 @@ public class Position {
 	private int y;
 
 	public Position() {
-		setX(0);
-		setY(0);
+
 	}
 
 	public Position(int x, int y) {
@@ -21,10 +20,12 @@ public class Position {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null)
+		if (obj == null) {
 			return false;
-		if (!(obj instanceof Position))
+		}
+		if (!(obj instanceof Position)) {
 			return false;
+		}
 		Position p = (Position) obj;
 		return this.getX() == p.getX() && this.getY() == p.getY();
 	}

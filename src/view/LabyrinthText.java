@@ -1,47 +1,63 @@
 package view;
 
+import java.util.List;
+
 import model.Labyrinth;
 import model.Position;
 
 public class LabyrinthText implements LabyrinthView {
 
-	private Labyrinth lab;
+	private Labyrinth labyrinth;
 
-	public LabyrinthText(Labyrinth l) {
-		lab = l;
+	public LabyrinthText(Labyrinth labyrinth) {
+		this.labyrinth = labyrinth;
 	}
 
 	@Override
-	public void setLabyrinth(Labyrinth l) {
-		lab = l;
+	public void setLabyrinth(Labyrinth labyrinth) {
+		this.labyrinth = labyrinth;
 	}
 
 	@Override
 	public Labyrinth getLabyrinth() {
-		return lab;
+		return labyrinth;
 	}
 
 	@Override
-	public String toString() {
+	public String displayLabyrinth() {
 		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < lab.getRowCount(); i++) {
-			for (int j = 0; j < lab.getColumnCount(); j++) {
+		for (int i = 0; i < labyrinth.getRowCount(); i++) {
+			for (int j = 0; j < labyrinth.getColumnCount(); j++) {
 				sb.append("|");
 				Position current = new Position(i, j);
-				
-				if (lab.isFreeAt(current))
+
+				if (labyrinth.isFreeAt(current)) {
 					sb.append("-");
+				}
 
-				if (lab.isWallAt(current))
+				if (labyrinth.isWallAt(current)) {
 					sb.append("*");
+				}
 
-				if (lab.getStartCell().equals(current))
+				if (labyrinth.getStartCell().equals(current)) {
 					sb.append("S");
+				}
 
-				if (lab.getFinishCell().equals(current))
+				if (labyrinth.getFinishCell().equals(current)) {
 					sb.append("F");
+				}
 			}
 			sb.append("|\n");
+		}
+		return sb.toString();
+	}
+
+	@Override
+	public String displaySolution(List<Position> solution) {
+		StringBuilder sb = new StringBuilder();
+		
+		for (Position position : solution) {
+			sb.append( position.toString() + "\n");
 		}
 		return sb.toString();
 	}
