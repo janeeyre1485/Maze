@@ -6,19 +6,21 @@ import view.LabyrinthText;
 
 public class Controller {
 	public static void main(String[] args) {
-		MatrixLabyrinth l = new MatrixLabyrinth("input.txt");
+		MatrixLabyrinth matrixLabyrinth = new MatrixLabyrinth("input.txt");
 
-		LabyrinthText lt = new LabyrinthText(l);
-		System.out.println(lt.toString());
+		LabyrinthText labyrinthText = new LabyrinthText(matrixLabyrinth);
+		
+		System.out.println(labyrinthText.displayLabyrinth());
 
 		LabyrinthSolver is = new AutomatedSolver();
-		is.solve(l);
+		System.out.println(labyrinthText.displaySolution(is.solve(matrixLabyrinth)));
 
-		ListLabyrinth lst = new ListLabyrinth("list.txt");
+		ListLabyrinth listLabyrinth = new ListLabyrinth("list.txt");
 
-		LabyrinthText lstt = new LabyrinthText(lst);
-		System.out.println(lstt.toString());
+		labyrinthText.setLabyrinth(listLabyrinth);
 		
-		is.solve(lst);
+		System.out.println(labyrinthText.displayLabyrinth());
+		
+		System.out.println(labyrinthText.displaySolution(is.solve(listLabyrinth)));
 	}
 }

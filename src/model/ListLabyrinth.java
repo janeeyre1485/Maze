@@ -11,15 +11,14 @@ public class ListLabyrinth extends AbstractLabyrinth {
 	private HashMap<Position, Integer> labyrinthMap;
 
 	public ListLabyrinth(String path) {
-		try {
+		try (Scanner sc = new Scanner(new File(path))) {
 
-			Scanner sc = new Scanner(new File(path));
 			readSetupValues(sc);
 			rows = sc.nextInt();
 			columns = sc.nextInt();
 
 			int objCount = sc.nextInt();
-			labyrinthMap = new HashMap<Position, Integer>();
+			labyrinthMap = new HashMap<>();
 
 			for (int i = 0; i < objCount; i++) {
 				int x, y, type;
@@ -27,10 +26,12 @@ public class ListLabyrinth extends AbstractLabyrinth {
 				y = sc.nextInt();
 				type = sc.nextInt();
 				labyrinthMap.put(new Position(x, y), type);
-				if (type == startValue)
+				if (type == startValue) {
 					start = new Position(x, y);
-				if (type == finishValue)
+				}
+				if (type == finishValue) {
 					finish = new Position(x, y);
+				}
 			}
 			sc.close();
 

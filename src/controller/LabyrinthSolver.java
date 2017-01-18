@@ -1,10 +1,13 @@
 package controller;
+import java.util.List;
+
 import model.Labyrinth;
+import model.Position;
 
 
 public interface LabyrinthSolver {
 	
-	public void solve(Labyrinth l);
+	public List<Position> solve(Labyrinth l);
 	
 	
 }
