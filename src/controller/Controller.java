@@ -1,30 +1,34 @@
 package controller;
 
-import model.Labyrinth;
+import model.labyrinth.Labyrinth;
+import model.labyrinth.LabyrinthFactory;
+import model.solver.AutomatedSolver;
+import view.LabyrinthObserver;
 import view.LabyrinthText;
 import view.LabyrinthView;
+import view.PrintObserver;
 
 public class Controller {
 	public static void main(String[] args) {
 		LabyrinthFactory factory = new LabyrinthFactory();
-		
+
 		Labyrinth matrixLabyrinth = factory.createLabyrinth("matrix.txt");
 		Labyrinth listLabyrinth = factory.createLabyrinth("list.txt");
 
-		
-		
-		LabyrinthView labyrinthText = new LabyrinthText(matrixLabyrinth);
-		
-		System.out.println(labyrinthText.displayLabyrinth());
+		LabyrinthObserver obs = new PrintObserver();
 
-		LabyrinthSolver is = new AutomatedSolver();
-		System.out.println(labyrinthText.displaySolution(is.solve(matrixLabyrinth)));
+		LabyrinthView labyrinthText = new LabyrinthText();
 
+		AutomatedSolver is = new AutomatedSolver();
 
-		labyrinthText.setLabyrinth(listLabyrinth);
-		
-		System.out.println(labyrinthText.displayLabyrinth());
-		
-		System.out.println(labyrinthText.displaySolution(is.solve(listLabyrinth)));
+		System.out.println(labyrinthText.displayLabyrinth(matrixLabyrinth));
+
+		is.addObserver(obs);
+
+		is.solve(matrixLabyrinth);
+
+		System.out.println(labyrinthText.displayLabyrinth(listLabyrinth));
+
+		is.solve(listLabyrinth);
 	}
 }

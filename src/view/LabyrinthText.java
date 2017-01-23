@@ -2,29 +2,15 @@ package view;
 
 import java.util.List;
 
-import model.Labyrinth;
-import model.Position;
+import model.labyrinth.Labyrinth;
+import model.util.Position;
 
 public class LabyrinthText implements LabyrinthView {
 
-	private Labyrinth labyrinth;
 
-	public LabyrinthText(Labyrinth labyrinth) {
-		this.labyrinth = labyrinth;
-	}
 
 	@Override
-	public void setLabyrinth(Labyrinth labyrinth) {
-		this.labyrinth = labyrinth;
-	}
-
-	@Override
-	public Labyrinth getLabyrinth() {
-		return labyrinth;
-	}
-
-	@Override
-	public String displayLabyrinth() {
+	public String displayLabyrinth(Labyrinth labyrinth) {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < labyrinth.getRowCount(); i++) {
 			for (int j = 0; j < labyrinth.getColumnCount(); j++) {

@@ -1,8 +1,4 @@
-package controller;
-
-import model.Labyrinth;
-import model.ListLabyrinth;
-import model.MatrixLabyrinth;
+package model.labyrinth;
 
 public  class LabyrinthFactory {
 	public Labyrinth createLabyrinth(String path){

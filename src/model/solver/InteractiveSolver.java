@@ -1,18 +1,18 @@
-package controller;
+package model.solver;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import model.Labyrinth;
-import model.Position;
+import model.labyrinth.Labyrinth;
+import model.util.Position;
 
-public class InteractiveLSolver implements LabyrinthSolver {
+public class InteractiveSolver extends AbstractLabyrinthSolver {
 
 	@Override
 	public List<Position> solve(Labyrinth l) {
 		Position current = l.getStartCell();
-		List<Position> solutionPath = new ArrayList<>();
+		solutionPath = new ArrayList<>();
 		solutionPath.add(current);
 		while (!current.equals(l.getFinishCell())) {
 			System.out.println("You are currently at position: " + current.getX() + ", " + current.getY());
@@ -40,5 +40,10 @@ public class InteractiveLSolver implements LabyrinthSolver {
 
 		keyb.close();
 		return p;
+	}
+
+	@Override
+	public List<Position> getSolution() {
+		return solutionPath;
 	}
 }
