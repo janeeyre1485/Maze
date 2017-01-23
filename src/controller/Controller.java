@@ -1,21 +1,25 @@
 package controller;
 
-import model.ListLabyrinth;
-import model.MatrixLabyrinth;
+import model.Labyrinth;
 import view.LabyrinthText;
+import view.LabyrinthView;
 
 public class Controller {
 	public static void main(String[] args) {
-		MatrixLabyrinth matrixLabyrinth = new MatrixLabyrinth("input.txt");
+		LabyrinthFactory factory = new LabyrinthFactory();
+		
+		Labyrinth matrixLabyrinth = factory.createLabyrinth("matrix.txt");
+		Labyrinth listLabyrinth = factory.createLabyrinth("list.txt");
 
-		LabyrinthText labyrinthText = new LabyrinthText(matrixLabyrinth);
+		
+		
+		LabyrinthView labyrinthText = new LabyrinthText(matrixLabyrinth);
 		
 		System.out.println(labyrinthText.displayLabyrinth());
 
 		LabyrinthSolver is = new AutomatedSolver();
 		System.out.println(labyrinthText.displaySolution(is.solve(matrixLabyrinth)));
 
-		ListLabyrinth listLabyrinth = new ListLabyrinth("list.txt");
 
 		labyrinthText.setLabyrinth(listLabyrinth);
 		
