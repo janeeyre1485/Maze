@@ -1,5 +1,7 @@
-package model;
+package model.labyrinth;
 import java.util.List;
+
+import model.util.Position;
 
 public interface Labyrinth {
 	

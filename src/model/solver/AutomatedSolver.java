@@ -1,4 +1,4 @@
-package controller;
+package model.solver;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,18 +8,19 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
-import model.Labyrinth;
-import model.Position;
+import model.labyrinth.Labyrinth;
+import model.util.Position;
 
-public class AutomatedSolver implements LabyrinthSolver {
+public class AutomatedSolver extends AbstractLabyrinthSolver {
 
+	
 	@Override
 	public List<Position> solve(Labyrinth l) {
 		Position current = new Position(l.getStartCell());
 		Queue<Position> q = new LinkedList<>();
 		Set<Position> visited = new HashSet<>();
 		HashMap<Position, Position> path = new HashMap<>();
-		List<Position> solutionPath = new ArrayList<>();
+		solutionPath = new ArrayList<>();
 
 		q.add(current);
 		visited.add(current);
@@ -49,8 +50,11 @@ public class AutomatedSolver implements LabyrinthSolver {
 
 		}
 
+		notifyObservers();
 		return solutionPath;
 
 	}
+	
+	
 
 }

@@ -1,6 +1,8 @@
-package model;
+package model.labyrinth;
 
 import java.util.Scanner;
+
+import model.util.Position;
 
 public abstract class AbstractLabyrinth implements Labyrinth {
 	protected int startValue, finishValue, freeValue, wallValue;

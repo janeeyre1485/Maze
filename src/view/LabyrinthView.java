@@ -1,16 +1,16 @@
 package view;
 import java.util.List;
 
-import model.Labyrinth;
-import model.Position;
+import model.labyrinth.Labyrinth;
+import model.util.Position;
 
 public interface LabyrinthView {
 	
-	public String displayLabyrinth();
+	public String displayLabyrinth(Labyrinth l);
 
-	public void setLabyrinth(Labyrinth l);
-
-	public Labyrinth getLabyrinth();
-	
+//	public void setLabyrinth();
+//
+//	public Labyrinth getLabyrinth();
+//	
 	public String displaySolution(List<Position> solution);
 }
